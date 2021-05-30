@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Resume</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        #resumeBody {
+            /* font-family: 'Montserrat', sans-serif; */
+            /* font-stretch: semi-condensed; */
+            /* font-weight: 400; */
+            height: 60rem;
+            min-height: 80rem;
+            max-height: 100rem;
+            width: 52rem;
+            background-color: #f1f1f1;
+            margin: auto;
+            /* padding-bottom: 5px; */
+        }
+
+        #header {
+
+            height: 6%;
+            background-color: #1241a9;
+
+        }
+
+
+
+        #image {
+            height: 150px;
+            width: 150px;
+            /* border-radius: 50%; */
+            margin-top: -2.45rem;
+            margin-left: 8.48cm;
+        }
+
+        aside {
+            width: 40%;
+            padding: 0px 20px 0px 20px;
+            margin-right: 20px;
+            float: left;
+            color: rgb(0, 0, 0);
+            z-index: 2;
+            border-right: 2px solid black;
+            /* background-color: #1242a95d; */
+            /* box-shadow: 5px 0px rgba(122, 122, 121, 0.4); */
+        }
+
+        article h3 hr {
+            /* float: right; */
+            /* margin-right: 30px; */
+            /* width: 40.5%; */
+            border: 0.1px solid black;
+            display: block;
+            background-color: black;
+            margin-top: -0.46em;
+
+            /* border-style: ridge; */
+        }
+
+
+        img {
+            height: 80%;
+            width: 80%;
+            border-radius: 50%;
+            margin: 0px 15px 60px 1px;
+            border: 10px solid #f1f1f1;
+
+
+            background-color: white;
+            border-radius: 50%;
+
+            position: absolute;
+            margin: auto;
+        }
+
+
+        h3 {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #1241a9;
+            /*border-bottom: 5px solid #1241a9; */
+        }
+
+        main {
+            margin: auto;
+            height: auto;
+            padding: 0px 20px 0px 20px;
+            /* border-left: inset; */
+        }
+
+        article {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: xxx-large;
+            text-transform: uppercase;
+        }
+
+        /*aside h3 {
+            margin-top: -60px;
+            margin-bottom: 20px;
+        }*/
+
+        .bgsvg {
+            margin-left: -30px;
+        }
+
+        .bgsvg1 {
+            margin-top: 5%;
+        }
+
+
+        #info {
+            margin-left: 20px;
+            margin-bottom: -30px;
+        }
+
+        #info td {
+            padding: 0 5px 0 5px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        td,
+        p,
+        li,
+        dt {
+            font-size: small;
+        }
+
+        dd {
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        li {
+            padding-bottom: 10px;
+        }
+
+        ul {
+            /* margin-bottom: -30px; */
+            /* margin-top: 10px; */
+            margin-left: 5px;
+        }
+
+        .roundedBorder {
+            background-color: rgb(187, 187, 187);
+            border-radius: 20px;
+            padding: 1px 7px;
+        }
+
+        #download {
+            position: fixed;
+            right: -165px;
+            top: 50%;
+            padding: 26px 30px;
+            background-color: cyan;
+            font-size: 21px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 10px 10px 10px darkcyan;
+            outline: none;
+        }
+
+        #download:hover {
+            position: fixed;
+            right: 5px;
+            top: 50%;
+            background-color: cyan;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 10px 10px 10px darkcyan;
+            transition: 0.5s;
+            font-size: 26px;
+            padding: 21px 20px;
+            font-weight: 600;
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="template">
+        <div id="resumeBody">
+            <div id="header"></div>
+
+            <img src="/media/images/{{image}}"
+                class="img-fluid z-depth-1" loading="lazy" id="image" alt="Profile">
+
+            <svg class="bgsvg1 " width="100%" height="90">
+                <polygon points="0,0 832,0 832,30 397,90 0,30" style="fill: #1241a9; "></polygon>
+            </svg>
+
+            <center>
+                <article>
+                    <h1>{{fname}} {{lname}}</h1>
+                    <dd>Senior Web Developer</dd>
+                </article>
+
+            </center>
+
+            <aside>
+
+                <article>
+                    <h3>About Me
+                        <span>
+                            <div style="width: auto; margin-left: 57%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+                    <p> {{about}}
+                    </p>
+                </article>
+                <article>
+
+                    <h3>Contact
+                        <span>
+                            <div style="width: auto; margin-left: 50%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+
+                    <table id="info">
+                        <tr>
+                            <td>
+                                <!-- Address -->
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                </svg>
+                            </td>
+                            <td>{{address}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!-- Date of Birth  -->
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-calendar2-event-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 3.5c0-.276.244-.5.545-.5h10.91c.3 0 .545.224.545.5v1c0 .276-.244.5-.546.5H2.545C2.245 5 2 4.776 2 4.5v-1zM11.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                </svg>
+                            </td>
+                            <td>{{dob}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-telephone-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
+                                </svg>
+                            </td>
+                            <td>{{phone}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-envelope-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                                </svg>
+                            </td>
+                            <td>{{email}}</td>
+                        </tr>
+                        {% if linkedin %}
+                        <tr>
+                            <td>
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-envelope-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                                </svg>
+                            </td>
+                            <td>{{linkedin}}</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+
+                </article>
+                <article>
+
+
+
+                    <h3>Skills
+                        <span>
+                            <div style="width: auto; margin-left: 37%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+                    <ul type="square">
+                        {% for skill in skills %}
+                        <li>{{skill}}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h3>Languages
+                        <span>
+                            <div style="width: auto; margin-left: 50%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+                    <ul type="square">
+                        {% for lang in langs %}
+                        <li>{{lang}}</li>
+                        {% endfor %}
+                    </ul>
+
+                </article>
+                <article>
+                    <h3>Work Experience
+                        <span>
+                            <div style="width: auto; margin-left: 93%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+
+                    {% if not work_experience %}
+                    <dt>
+                        <span class="text-danger p-3 mb-5 text-uppercase">Fresher</span>
+                    </dt>
+                    {% endif %}
+                    {% for company_name,job_description in work_experience.items %}
+                    <dt>
+
+                        <span class="font-weight-bold">{{job_description.1}} years Experience in</span>
+                        <span class="text-danger p-3 mb-5 text-uppercase">{{company_name}}</span>
+                        <p>I was working as the {{job_description.0}} in this company</p>
+                    </dt>
+                    {% endfor %}
+
+                </article>
+
+            </aside>
+
+
+            <main>
+                <article>
+                    <h3>Education
+                        <span>
+                            <div style="width: auto; margin-left: 67%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+                    <dt>
+                        <span class="font-weight-bold">Class X</span>
+                        <span class="text-danger p-3 mb-5 text-uppercase"> {{ten_board}} board</span>
+                    </dt>
+                    <p>The percentage in class Xth is {{ten_marks}}</p>
+                    <dt>
+                        <span class="font-weight-bold">Class XII</span>
+                        <span class="text-danger p-3 mb-5 text-uppercase"> {{twelve_board}} board</span>
+                    </dt>
+                    <p>The percentage in class Xth is {{twelve_marks}}.</p>
+                    <dt>
+                        <span class="font-weight-bold">{{degree}}</span>
+                        <span class="text-danger p-3 mb-5 text-uppercase">CGPA {{cgpa}}</span>
+                    </dt>
+                    <p>The degree in {{degree}} was taken from {{institute}} institute.</p>
+
+                    <h6>Competative Exams</h6>
+                    {% for exam_name,rank in exam.items %}
+                    <dt>
+                        <span class="font-weight-bold">{{exam_name}}</span>
+                        <span class=" text-danger p-3 mb-5 text-uppercase">Rank: {{rank}}</span>
+                    </dt>
+                    <!-- <p>The degree in {{degree}} was taken from {{institute}}</p> -->
+                    {% endfor %}
+
+                    {% if course_name %}
+                    <br>
+                    <h6>Certification Courses</h6>
+                    {% for course_name,duration in certificate.items %}
+                    <dt>
+                        <span class="font-weight-bold">{{course_name}}</span>
+                        <span class="text-danger p-3 mb-5 text-uppercase">Duration: {{duration}} weeks</span>
+                    </dt>
+                    <!-- <p>The degree in {{degree}} was taken from {{institute}}</p> -->
+                    {% endfor %}
+                     {% endif %}
+
+                </article>
+
+                <article>
+                    <h3>Internship
+                        <span>
+                            <div style="width: auto; margin-left: 68%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+                    {% if not internship %}
+                    <span class="text-danger p-3 mb-5 text-uppercase">Internships Not Done</span>
+                    {% endif %}
+                    {% for internship,internship_desc in internship.items %}
+                    <dt>
+                        <span class="font-weight-bold">{{internship_desc.1}} weeks</span>
+                        <span class="text-danger p-3 mb-5 text-uppercase">{{internship}}</span>
+                 </dt>
+                 <p>{{internship_desc.0}}</p>
+                            <p>The skills gained in process of making this project are {{internship_desc.2}}</p>
+                            {% endfor %}
+
+                </article>
+                <article>
+                    <h3>Project
+                        <span>
+                            <div style="width: auto; margin-left: 60%">
+                                <hr>
+                            </div>
+                        </span>
+                    </h3>
+                    {% if not project %}
+                    <span class="text-danger p-3 mb-5 text-uppercase">Project Not Done</span>
+                    {% endif %}
+                    {% for project,project_desc in project.items %}
+                    <dt>
+                        <span class="font-weight-bold"></span>
+                        <span class="text-danger p-3 mb-5 text-uppercase">{{project}}</span>
+                    </dt>
+                    <p>The skills gained in process of making this project are {{project_desc.1}}</p>
+                    <p>{{project_desc.0}}</p>
+                    {% endfor %}
+
+                </article>
+
+            </main>
+
+        </div>
+    </div>
+  <button id="download">Dowload PDF</button>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+    <script>
+        document.getElementById('download').addEventListener('click', (e) => {
+
+
+            // const downloadMarkup = document.getElementById('template');
+            // const downloadMarkup = `<div id="template"><div class="row"><div class="col-6"><label for="">Email: </label><span class="inputCredential" id="email">${email}</span></div><div class="col-6"><label for="">Address: </label><span class="inputCredential" id="address">${address}</span></div></div><div class="row"><div class="col-6"><label for="">City: </label><span class="inputCredential" id="city">${city}</span></div><div class="col-6"><label for="">State: </label><span class="inputCredential" id="state">${state}</span></div></div></div>`
+            const downloadMarkup = document.getElementById('template');
+            console.log(downloadMarkup);
+            // var opt = {
+            //   filename: 'demo.pdf'
+            // }
+            html2pdf().from(downloadMarkup).save();
+
+        })
+    </script>
+</body>
+
+</html>

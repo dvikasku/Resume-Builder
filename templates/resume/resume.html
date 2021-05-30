@@ -1,0 +1,227 @@
+{% extends 'resume/basic.html' %}
+{% block title %} Resume {% endblock %}
+{% block style %}
+<style>
+    .home-btn {
+        margin-left: 29rem;
+        margin-top: 3rem;
+        /* margin: 1.5rem 14.5rem; */
+        padding: 9px 23px;
+        border: navajowhite;
+        border-radius: 10px;
+        background-color: #32dbc6;
+        font-family: 'Nunito', sans-serif;
+        font-family: 'Quicksand', sans-serif;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .home-btn:hover {
+        background-color: #32dbc6;
+        color: white;
+        box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 50px #2196f3;
+        transition-delay: 100ms;
+    }
+
+    #start::before {
+        content: "";
+        position: absolute;
+        height: 667px;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        background: url("/static/hero_1.jpg") no-repeat center center/cover;
+        opacity: 0.3;
+        z-index: -1
+    }
+
+    .step-number {
+        display: inline;
+        border: 1px solid;
+        border-radius: 42%;
+        padding: 10px;
+    }
+
+    /* Temlate Section */
+    .template-section {
+        margin-top: 7rem;
+    }
+
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .card-item:hover .image {
+        opacity: 0.1;
+    }
+
+    .card-item:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: #32dbc6;
+        box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 50px #2196f3;
+        transition-delay: 100ms;
+        color: black;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- Start Section -->
+<div id="start">
+    <div class="container" style="margin-top: 8rem;">
+        <div class="heading">
+            <h2 class="center">Complete your Resume in Three Easy Steps</h2>
+        </div>
+        <div class="row mt-5">
+            <div class="col-sm-4">
+                <div class="card " style="width: 18rem;background-color: #82ceff;">
+                    <div class="card-body center">
+                        <span class="border rounded "
+                            style="background-color: #00246d; color: white;padding: 7px 24px;">
+                            <h5 style="display: inline;">Template</h5>
+                        </span>
+                        <h6 class="" style="margin-top: 19px;
+                        margin-bottom: 1rem;">Select the template of your choice</h6>
+                        <h3 class="step-number" style="background-color: #0083ff;">1</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card " style="width: 18rem;background-color: #82ceff;">
+                    <div class="card-body center">
+                        <span class="border rounded "
+                            style="background-color: #00246d; color: white;padding: 7px 24px;">
+                            <h5 style="display: inline;">Details</h5>
+                        </span>
+                        <h6 class="" style="margin-top: 19px;
+                        margin-bottom: 1rem;">Enter the correct details of your resume</h6>
+                        <h3 class="step-number" style="background-color: #0083ff;">2</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" style="width: 18rem;    background-color: #82ceff">
+                    <div class="card-body center">
+                        <span class="border rounded "
+                            style="background-color: #00246d; color: white;padding: 7px 24px;">
+                            <h5 style="display: inline;">Print</h5>
+                        </span>
+                        <h6 class="" style="margin-top: 19px;
+                        margin-bottom: 1rem;">Print the best resume you created!</h6>
+                        <h3 class="step-number" style="background-color: #0083ff;">3</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="home-btn" onclick="topFunction(587)" style="background-color: #00246d;color: white;">
+            <h3>Let's Do It</h3>
+        </button>
+    </div>
+</div>
+
+
+<!-- Template Section -->
+<div class="container-fluid template-section" style="background-color: #cbcbf5;padding: 121px;">
+    <div class="row">
+        <div class="col-3 card-item">
+            <img src="/static/temp1.jpg" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp1.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp1.jpg" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp1.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp5.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp5.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp5.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp5.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-3 card-item">
+            <img src="/static/temp6.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp6.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp2.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp2.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp4.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp4.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp4.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume/input/" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp4.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock%}

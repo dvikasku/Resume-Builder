@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block css %}
+<style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .px-3{
+              text-align: center;
+              padding : 200px;
+      }
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.typing-demo {
+  width: 22ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 50px;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+.px-3{
+  padding : 80px;
+}
+
+/* Temlate Section */
+    .template-section {
+        margin-top: 7rem;
+    }
+
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .card-item:hover .image {
+        opacity: 0.1;
+    }
+
+    .card-item:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: #32dbc6;
+        box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 50px #2196f3;
+        transition-delay: 100ms;
+        color: black;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+    </style>
+ {% endblock %}
+
+{% block body %}
+{% load static %}
+ 
+<div class="container">
+{% comment %} {% load static %}
+<img src="{% static '1.jpg' %}" alt="My image">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> {% endcomment %}
+ <main class="px-3">
+    <div class="wrapper">
+    <div class="typing-demo">
+    Creat Your Own Resume.
+    </div>
+    </div>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary fw-bold border-black bg-black">Learn more</a>
+    </p>
+  </main>
+  
+  <!-- Template Section -->
+  {% load static %}
+<div class="container-fluid template-section" style="background-color: #cbcbf5;">
+    <div class="row">
+        <div class="col-3 card-item">
+            <img src="{% static 'temp1.jpg' %}" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp1.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="{% static 'temp1.jpg' %}" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp1.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp5.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp5.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp5.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp5.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-3 card-item">
+            <img src="/static/temp6.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp6.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp2.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp2.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp4.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp4.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-3 card-item">
+            <img src="/static/temp4.JPG" alt="Avatar" class="image" style="width:100%;height: 100%;">
+            <div class="middle">
+                <form action="/resume" method="GET">{% csrf_token %}
+                    <input type="text" name="template_name" value="temp4.html" style="display: none;">
+                    <button class="btn" type="submit"><div class="text">Select</div></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+</script>
+{% endblock %}

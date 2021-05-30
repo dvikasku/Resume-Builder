@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+              body{
+            background-color: #0000f129;
+          }
+             body {
+            font-family: 'Rubik', sans-serif;
+        }
+
+        /* NAVIGATION SECTION */
+        .navbar {
+            /* padding: 22px; */
+            padding: 13px;
+            background-color: white;
+        }
+
+        #logo {
+            width: 55px;
+            margin-left: 137PX;
+            padding: 4px;
+            border-radius: 50%;
+            background-color: #c0f5ed;
+            box-shadow: 0 0 20px #00735e;
+        }
+
+        .navbar-brand {
+            /* font-size: 24px; */
+            /* margin-left: 124px; */
+            /* margin-left: 25px;
+            border-radius: 10px;
+            padding: 0px 25px;
+            background-color: #c0f5ed;
+            box-shadow: 0 0 20px #00735e;
+            font-size: 24px; */
+            /* margin-left: 124px; */
+            margin-left: 25px;
+            border-radius: 10px;
+            color: rgb(255 255 255 / 90%);
+            font-weight: bold;
+
+        }
+
+        .navbar-nav {
+            /* position: absolute;
+            right: 100px; */
+            font-size: 17px;
+        }
+
+        .nav-link {
+            margin: 0 20px;
+            color: white;
+        }
+
+        .nav-link:hover {
+            background-color: #325fdb;
+            color: white;
+            border-radius: 5px;
+            /* box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 40px #2196f3; */
+            box-shadow: 0 0 10px #015091, 0 0 20px #0665b3, 0 0 40px #0661ac;
+            /* transition-delay: 100ms; */
+        }
+
+        .welcome-user {
+            color: white;
+            border-radius: 10px;
+            background-color: #0082a5;
+        }
+
+        /* HOME section */
+
+
+        /* FOOTER */
+        .footer {
+            background-color: black;
+            margin-top: 50px;
+            height: 85vh;
+            color: white;
+        }
+
+        .contact-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* UTILITY  */
+        .center {
+            text-align: center;
+
+        }
+
+        hr {
+            background-color: white;
+            width: 83%;
+            margin-top: 2rem;
+        }
+       {% block css %} 
+       
+       {% endblock %}
+  </style>
+  {% block style %} {% endblock %}
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Resume</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="    position: absolute;
+    left: 32%;">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact Us</a>
+      </li>
+    </ul>
+{% if user.is_authenticated %}
+<ul class="navbar-nav mr-2">
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/logout">Logout</a>
+
+        </div>
+      </li>
+      </ul>
+      </div>
+{% else %}
+  <!-- Button to  trigger Login modal -->
+<button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#loginModal">
+Login
+</button>
+
+<button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#signupModal">
+SignUp
+</button>
+{% endif %}
+
+
+    </nav>
+    {% for message in messages  %}            
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      {% endfor %}    
+
+
+
+ 
+
+<!-- SignUp Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       {% if otp %}
+       <form action= "/signup" method='post'>
+       {% csrf_token %}
+       <input typer = "hidden" name="usr" value="{{usr.username}}">
+  <div class="form-group">
+    <label for="username">Verify Your Email</label>
+    <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter Otp" required>
+  </div>
+  </form>
+
+       {% else %}
+        <form action= "/signup" method='post'>
+        {% csrf_token %}
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username" required>
+  </div>
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" required>
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+  </div>
+  <div class="form-group">
+    <label for="pass1">Choose a password</label>
+    <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password" required>
+  </div>
+  <div class="form-group">
+    <label for="pass2">Confirm Password</label>
+    <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again" required>
+  </div>
+ 
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endif %}
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+    
+  {% block body %}
+ 
+   {% endblock %}
+
+    <!-- FOOTER -->
+    <div class="footer ">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-4 p-3">
+                    <h4>About Us</h4>
+                    <p style="color: grey">We are expert in making the best porfolios and resume you can expect. We
+                        provide the facility of making your resume and portfolio that can land you your
+                        dream job </p>
+                </div>
+                <div class="col-4 p-3">
+                    <h4>Features</h4>
+                    <ul style="color: grey; list-style: none;padding:0px;">
+                        <li>Resume</li>
+                        <li>Portfolio</li>
+                        <li>Discussion Forum</li>
+                    </ul>
+                </div>
+                <div class="col-4 p-3">
+                    <h4>Follow us</h4>
+                    <div class="contact-logo">
+                        <a href="https://facebook.com/" target="_blank"><img src="/static/lg1.png" alt=""
+                                style="width: 50px;margin:5px 0px;"></a>
+                        <a href="https://pintrest.com/" target="_blank"><img src="/static/lg2.png" alt=""
+                                style="width: 50px;margin:5px 0px;"></a>
+                        <a href="https://instagram.com/" target="_blank"><img src="/static/lg3.jpg" alt=""
+                                style="width: 50px;margin:5px 0px;"></a>
+                        <a href="https://linkedin.com/" target="_blank"><img src="/static/lg4.png" alt=""
+                                style="width: 50px;margin:5px 0px;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="center">Copywrite &#169;2020 MyFolio.com. All rights reserved</p>
+    </div>
+
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="POST"> 
+        {% csrf_token %}
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter your username "required>
+  </div>
+  <div class="form-group">
+    <label for="pass">Enter your password </label>
+    <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter your password "required>
+  </div>
+ 
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+       <div class="modal-footer">
+      </div>
+
+
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+      <script>
+    function topFunction(x) {
+            document.documentElement.scrollTop = x;
+        }
+    </script>
+    {% block js %}
+      {% endblock %}
+  </body>
+</html>

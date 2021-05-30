@@ -1,0 +1,882 @@
+{% extends 'base.html' %}
+{% block title %}Details{% endblock %}
+{% block style %}
+<style>
+body{
+  background-color: #0000f129;
+}
+#heading::before {
+        content: "";
+        position: absolute;
+        height: 382px;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        background: url("/static/hero_1.jpg") no-repeat center center/cover;
+        opacity: 0.3;
+        z-index: -1
+    }
+
+  .data-heading {
+    display: inline-block;
+    color: #5a6b6b;
+    border: 2px solid aqua;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px cyan;
+    padding: 5px 14px;
+    margin: 10px -7px;
+  }
+
+  #personal:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+
+  #academic:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+
+  #work:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+  #project:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+  #internship:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+  #skills:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+  #langs:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+  #hobs:hover h3 {
+    box-shadow: 0 0 10px #2196f3, 0 0 20px #2196f3, 0 0 30px #2196f3;
+  }
+
+  .detail-seperation-hr {
+    background-color: #80e7ef;
+    width: 100%;
+    margin-top: 2rem;
+    height: 1px;
+  }
+
+  .projectHr {
+    background-color: #006079;
+    margin-left: 163px;
+    width: 58%;
+    margin-top: 2rem;
+    height: 0px;
+  }
+
+  .internshipHr {
+    background-color: #006079;
+    margin-left: 178px;
+    width: 84%;
+    margin-top: 2rem;
+    height: 0px;
+  }
+
+  #skill-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .skill {
+    display: flex;
+    margin: 5px;
+  }
+
+  #lang-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .lang {
+    display: flex;
+    margin: 5px;
+  }
+
+  #hob-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hob {
+    display: flex;
+    margin: 5px;
+  }
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+  <div id="heading">
+    <h2 class="center">Complete your Details</h2>
+    <img src="/static/details.png" alt="" style="width: 13rem;margin-left: 29rem;">
+  </div>
+
+  <form action="" method="POST" enctype="multipart/form-data" >
+    <!-- Template Selcted -->
+    <input type="text" name="template_name" style="display: none;" value="{{template_name}}">
+    <!-- PERSONAL Details  -->
+        {% csrf_token %}
+    <hr class="detail-seperation-hr">
+    <div id="personal">
+      <img src="/static/personal.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Personal Details</h3>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+        <div class="col">
+          <input type="text" class="form-control" name="fname" id="fname" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="lname" id="lname" placeholder="Last name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" name="email" id="email"placeholder="Email Id">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">LinkedIn</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="linkedIn" id="linkedIn"placeholder="LinkedIn Id">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label" name="Address">Address</label>
+        <div class="col">
+          <input type="text" class="form-control" name="add" id="add" placeholder="Address">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Date of Birth</label>
+        <div class="col-6">
+          <input type="date" class="form-control" name="dob" id="dob">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="gender" id="gender" placeholder="gender">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-6">
+          <input type="number" class="form-control" name="phone" id="phone">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Tell Something about yourself</label>
+        <div class="col-6">
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="about" id="about" rows="3"
+                placeholder="About.."></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputImage" class="col-sm-2 col-form-label">Profile Picture</label>
+        <div class="col-6">
+          <input type="file" class="form-control-file" name="image" id="image">
+        </div>
+      </div>
+    </div>
+    <hr class="detail-seperation-hr">
+
+   <!-- ACADEMIC Details -->
+    <div id="academic">
+      <img src="/static/academic.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Academic Details</h3>
+      <!-- School Details -->
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Class Xth</label>
+        <div class="col">
+          <input type="text" class="form-control" name="ten-board" placeholder="Board">
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" name="ten-marks" placeholder="Percentage/Pointer">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Class XIIth</label>
+        <div class="col">
+          <input type="text" class="form-control" name="twelve-board" placeholder="Board">
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" name="twelve-marks" placeholder="Percentage/Pointer">
+        </div>
+      </div>
+
+      <!-- Graduation Details -->
+      <div id="graduation">
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Degree</label>
+          <div class="form-group col-sm-10">
+            <input type="text" class="form-control" name="degree" placeholder="Degree Name" id="degree">
+          </div>
+          <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+          <div class="form-group col-sm-10">
+            <input type="text" class="form-control" name="institute" placeholder="Institute Name" id="institute">
+          </div>
+          <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+          <div class="form-group col-sm-10">
+            <input type="text" class="form-control" name="cgpa" placeholder="Aggregate CGPA" id="inputPassword">
+          </div>
+        </div>
+      </div>
+
+      <!-- Competative Exam Details -->
+      <div id="cp">
+        <div class="form-group row" id="cp">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Competative Exams</label>
+          <div class="col">
+            <input type="text" class="form-control" name="exam1" placeholder="Exam Name 1">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" name="rank1" placeholder="Rank">
+          </div>
+          <div class="col">
+            <button id="addExam" class="btn btn-primary">+</button>
+          </div>
+          <input type="number" style="display: none;" name="no-of-exam" id="no_of_exam" value=1>
+        </div>
+      </div>
+
+      <!-- GRE and TOEFL -->
+      <div id="cp">
+        <div class="form-group row" id="cp">
+          <label for="staticEmail" class="col-sm-2 col-form-label">GRE Score</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="gre" placeholder="GRE Score">
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <!-- Certification Courses -->
+      <div id="cr">
+        <div class="form-group row" id="cp">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Certification Courses</label>
+          <div class="col">
+            <input type="text" class="form-control" name="course1" placeholder="Course 1 name">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" name="duration1" placeholder="Duration in Weeks">
+          </div>
+          <div class="col">
+            <button id="addCertificate" class="btn btn-primary">+</button>
+          </div>
+          <input type="number" style="display: none;" name="no-of-course" id="no_of_course" value=1>
+        </div>
+      </div>
+
+    
+    <hr class="detail-seperation-hr">
+
+    <!-- WORK EXPERIENCE -->
+    <div id="work">
+      <img src="/static/work.jpg" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Work Experience</h3>
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">Work Status</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="experience-status" id="fresher" value="frehser"
+                checked>
+              <label class="form-check-label" for="json">
+                Fresher
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="experience-status" id="industrial-exp"
+                value="experienced">
+              <label class="form-check-label" for="params">
+                Industrial Experience
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Experince Box, (Show when Selcted) -->
+      <div id="experience-box">
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Experience</label>
+          <div class="col">
+            <input type="text" class="form-control" name="company-name1" placeholder="Company Name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="job-title1" placeholder="Job Title">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" name="year1" placeholder="Years of Experience">
+          </div>
+          <div class="col">
+            <button id="addWork" class="btn btn-primary">+</button>
+          </div>
+          <input type="number" style="display: none;" name="no-of-company" id="no_of_company" value=1>
+        </div>
+      </div>
+    </div>
+    <hr class="detail-seperation-hr">
+
+    <!-- PROJECTS Details -->
+    <div id="project">
+      <img src="/static/project.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Projects</h3>
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">Project</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="project-status" id="no_project" value="noProject"
+                checked>
+              <label class="form-check-label" for="json">
+                None
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="project-status" id="done_project" value="doneProject">
+              <label class="form-check-label" for="params">
+                Have done projects
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Project Box, (Show when Selcted) -->
+      <div id="project-box">
+        <div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Project</label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="project-title1" placeholder="Project Title">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="project-description1" rows="3"
+                placeholder="Project Description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="skills-used1" placeholder="Skills Used">
+            </div>
+            <div class="col">
+              <button id="addProject" class="btn btn-primary">+</button>
+            </div>
+          </div>
+          <input type="number" style="display: none;" name="no-of-project" id="no_of_project" value=1>
+        </div>
+      </div>
+    </div>
+    <hr class="detail-seperation-hr">
+
+    <!-- INTERNSHIP Details -->
+    <div id="internship">
+      <img src="/static/internship.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Internships</h3>
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">Internship</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="internship-status" id="no_internship"
+                value="noInternship" checked>
+              <label class="form-check-label" for="json">
+                None
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="internship-status" id="done_internship"
+                value="doneInternship">
+              <label class="form-check-label" for="params">
+                Have done Internships
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Internship Box, (Show when Selcted) -->
+      <div id="internship-box">
+        <div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Internship</label>
+            <div class="col">
+              <input type="text" class="form-control" name="internship-title1" placeholder="Internship Title">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" name="internship-duration1"
+                placeholder="Internship Duration in Weeks">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="internship-description1" rows="3"
+                placeholder="Internship Description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="internship-skills-used1" placeholder="Skills Used">
+            </div>
+            <div class="col">
+              <button id="addInternship" class="btn btn-primary">+</button>
+            </div>
+          </div>
+          <input type="number" style="display: none;" name="no-of-internship" id="no_of_internship" value=1>
+        </div>
+      </div>
+    </div>
+    <hr class="detail-seperation-hr">
+
+    <!-- SKILLS and ABILITIES -->
+    <div id="skills">
+      <img src="/static/skills.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Skills and Abilities</h3>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-12 col-form-label"><b>List the skills you have</b></label>
+        <div id="skill-box">
+          <div class="skill">
+            <input type="text" class="form-control" name="skill1" placeholder="Skill">
+            <button id="addSkill" class="btn btn-primary" style="margin: 0px 6px;">+</button>
+          </div>
+          <input type="number" style="display: none;" name="no-of-skill" id="no_of_skill" value=1>
+        </div>
+      </div>
+    </div>
+   <hr class="detail-seperation-hr">
+
+    <!-- Languages -->
+    <div id="langs">
+      <img src="/static/skills.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Languages</h3>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-12 col-form-label"><b>List the Languages you know</b></label>
+        <div id="lang-box">
+          <div class="lang">
+            <input type="text" class="form-control" name="lang1" placeholder="Language">
+            <button id="addlang" class="btn btn-primary" style="margin: 0px 6px;">+</button>
+          </div>
+          <input type="number" style="display: none;" name="no-of-lang" id="no_of_lang" value=1>
+        </div>
+      </div>
+    </div>
+   <hr class="detail-seperation-hr">
+
+    <!-- Hobbies -->
+    <div id="hobs">
+      <img src="/static/skills.png" alt="" style="width: 9rem;margin-left: -2rem;margin-right: 1rem;">
+      <h3 class="data-heading">Hobbies</h3>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-12 col-form-label"><b>List Your Hobbies </b></label>
+        <div id="hob-box">
+          <div class="hob">
+            <input type="text" class="form-control" name="hob1" placeholder="Hobbies">
+            <button id="addhob" class="btn btn-primary" style="margin: 0px 6px;">+</button>
+          </div>
+          <input type="number" style="display: none;" name="no-of-hob" id="no_of_hob" value=1>
+        </div>
+      </div>
+    </div>
+   <button class="btn btn-info" type="submit">Submit</button>
+  </form>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+  console.log("Welcome to Input data file");
+
+  function addStringToElement(string) {
+    let div = document.createElement('div');
+    div.innerHTML = string;
+    div.setAttribute('class', 'form-group row')
+    //this is a new div and inside this div we have our string as an html element and thus we do div.firstElementChild method to get our string as HTML element
+    return div;
+  }
+
+  // ACADEMIC
+  var i_exam = 2;
+  document.getElementById('addExam').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<label for="staticEmail" class="col-sm-2 col-form-label"></label>
+                  <div class="col">
+                    <input type="text" class="form-control" name="exam${i_exam}" placeholder="Exam Name ${i_exam}" required>
+                  </div>
+                  <div class="col">
+                    <input type="number" class="form-control" name="rank${i_exam}" placeholder="Rank" required>
+                  </div>
+                  <div class="col">
+                    <button id="" class="btn btn-primary removeExam">-</button>
+                  </div>`
+
+    // console.log(addStringToElement(string));
+    document.getElementById('cp').appendChild(addStringToElement(string));
+
+    let removeExam = document.getElementsByClassName('removeExam');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removeExam) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.remove();
+
+      })
+    }
+    i_exam++;
+    document.getElementById('no_of_exam').setAttribute('value', i_exam)
+  })
+
+  var i_certificate = 2;
+  document.getElementById('addCertificate').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<label for="staticEmail" class="col-sm-2 col-form-label"></label>
+                  <div class="col">
+                    <input type="text" class="form-control" name="course${i_certificate}" placeholder="Course ${i_certificate} name " required>
+                  </div>
+                  <div class="col">
+                    <input type="number" class="form-control" name="duration${i_certificate}" placeholder="Duration" required>
+                  </div>
+                  <div class="col">
+                    <button id="" class="btn btn-primary removeCertificate">-</button>
+                  </div>`
+
+    // console.log(addStringToElement(string));
+    document.getElementById('cr').appendChild(addStringToElement(string));
+
+    let removeCertificate = document.getElementsByClassName('removeCertificate');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removeCertificate) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.remove();
+
+      })
+    }
+    i_certificate++;
+    document.getElementById('no_of_course').setAttribute('value', i_certificate)
+  })
+
+  // WORK EXPERIENCE
+
+
+  //already fresher is selected, so hide experience box
+  document.getElementById('experience-box').style.display = 'none';
+
+  //When we click on Industrial Experience, show Experince box
+  document.getElementById('industrial-exp').addEventListener('click', () => {
+    document.getElementById('experience-box').style.display = 'block'
+  })
+  //When we click back on fresher dont show Experince box
+  document.getElementById('fresher').addEventListener('click', () => {
+    document.getElementById('experience-box').style.display = 'none';
+
+
+    let no_of_children = document.getElementById('experience-box').children.length;
+    let child_elements = Array.from(document.getElementById('experience-box').children);
+    //deleting all the boxes, except the first one
+    for (let i = 1; i < no_of_children; i++) {
+      child_elements[i].remove();
+      console.log(child_elements[i]);
+    }
+
+  })
+
+  var i_work = 2;
+  document.getElementById('addWork').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<label for="staticEmail" class="col-sm-2 col-form-label"></label>
+          <div class="col">
+            <input type="text" class="form-control" name="company-name${i_work}" placeholder="Company Name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="job-title${i_work}" placeholder="Job Title">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" name="experience${i_work}" placeholder="Years of Experience">
+          </div>
+          <div class="col">
+            <button id="" class="btn btn-primary removeWork">-</button>
+          </div>`
+
+    // console.log(addStringToElement(string));
+    document.getElementById('experience-box').appendChild(addStringToElement(string));
+
+    let removeWork = document.getElementsByClassName('removeWork');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removeWork) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.remove();
+
+      })
+    }
+    i_work++;
+    document.getElementById('no_of_company').setAttribute('value', i_work)
+  })
+
+
+
+
+
+
+  // Project Details
+
+  //already none is selected, so hide project box
+  document.getElementById('project-box').style.display = 'none';
+
+  //When we click on Project , show project box
+  document.getElementById('done_project').addEventListener('click', () => {
+    document.getElementById('project-box').style.display = 'block'
+  })
+
+  //When we click back on fresher dont show project box and delete the project boxes already made
+  document.getElementById('no_project').addEventListener('click', () => {
+    document.getElementById('project-box').style.display = 'none';
+
+    let no_of_children = document.getElementById('project-box').children.length;
+    let child_elements = Array.from(document.getElementById('project-box').children);
+
+    //deleting all the boxes, except the first one
+    for (let i = 1; i < no_of_children; i++) {
+      child_elements[i].remove();
+      console.log(child_elements[i]);
+    }
+  })
+
+  var i_project = 2;
+  document.getElementById('addProject').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<hr class="projectHr"><div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="project-title${i_project}" placeholder="Project Title">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="project-description${i_project}" rows="3"
+                placeholder="Project Description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="skills-used${i_project}" placeholder="Skills Used">
+            </div>
+            <div class="col">
+              <button id="" class="btn btn-primary removeProject">-</button>
+            </div>
+          </div>
+          `
+
+    // console.log(addStringToElement(string));
+    let div = document.createElement('div');
+    div.innerHTML = string;
+    document.getElementById('project-box').appendChild(div);
+
+    let removeProject = document.getElementsByClassName('removeProject');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removeProject) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.parentElement.remove();
+
+      })
+    }
+    i_project++;
+    document.getElementById('no_of_project').setAttribute('value', i_project)
+  })
+
+
+
+
+
+  // INTERSHIP details
+
+  //already none is selected, so hide internship box
+  document.getElementById('internship-box').style.display = 'none';
+
+  //When we click on Project , show project box
+  document.getElementById('done_internship').addEventListener('click', () => {
+    document.getElementById('internship-box').style.display = 'block'
+  })
+
+  //When we click back on fresher dont show project box and delete the project boxes already made
+  document.getElementById('no_internship').addEventListener('click', () => {
+    document.getElementById('internship-box').style.display = 'none';
+
+    let no_of_children = document.getElementById('internship-box').children.length;
+    let child_elements = Array.from(document.getElementById('internship-box').children);
+
+    //deleting all the boxes, except the first one
+    for (let i = 1; i < no_of_children; i++) {
+      child_elements[i].remove();
+      console.log(child_elements[i]);
+    }
+  })
+
+  var i_internship = 2;
+  document.getElementById('addInternship').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<hr class="internshipHr"><div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Internship</label>
+            <div class="col">
+              <input type="text" class="form-control" name="internship-title${i_internship}" placeholder="Internship Title">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" name="internship-duration${i_internship}" placeholder="Internship Duration in Weeks">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="internship-description${i_internship}" rows="3"
+                placeholder="Internship Description"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label"></label>
+            <div class="col-6">
+              <input type="text" class="form-control" name="internship-skills-used${i_internship}" placeholder="Skills Used">
+            </div>
+            <div class="col">
+              <button id="" class="btn btn-primary removeInternship">-</button>
+            </div>
+          </div>
+          `
+
+    // console.log(addStringToElement(string));
+    let div = document.createElement('div');
+    div.innerHTML = string;
+    document.getElementById('internship-box').appendChild(div);
+
+    let removeInternship = document.getElementsByClassName('removeInternship');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removeInternship) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.parentElement.parentElement.remove();
+
+      })
+    }
+    i_internship++;
+    document.getElementById('no_of_internship').setAttribute('value', i_internship)
+  })
+
+
+  // Skills and Abilities
+  var i_skill = 2;
+  document.getElementById('addSkill').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<input type="text" class="form-control" name="skill${i_skill}" placeholder="Skill">
+            <button id="" class="btn btn-primary removeSkill" style="margin: 0px 6px;">-</button>
+          `
+
+
+    // console.log(addStringToElement(string));
+    let div = document.createElement('div');
+    div.innerHTML = string;
+    div.setAttribute('class', 'skill')
+    document.getElementById('skill-box').appendChild(div);
+
+    let removeSkill = document.getElementsByClassName('removeSkill');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removeSkill) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.remove();
+
+      })
+    }
+    i_skill++;
+    document.getElementById('no_of_skill').setAttribute('value', i_skill)
+  })
+
+  // Language
+  var i_lang = 2;
+  document.getElementById('addlang').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<input type="text" class="form-control" name="lang${i_lang}" placeholder="Language">
+            <button id="" class="btn btn-primary removelang" style="margin: 0px 6px;">-</button>
+          `
+ // console.log(addStringToElement(string));
+    let div = document.createElement('div');
+    div.innerHTML = string;
+    div.setAttribute('class', 'lang')
+    document.getElementById('lang-box').appendChild(div);
+
+    let removelang = document.getElementsByClassName('removelang');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removelang) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.remove();
+
+      })
+    }
+    i_lang++;
+    document.getElementById('no_of_lang').setAttribute('value', i_lang)
+  })
+
+  // Hobbies
+  var i_hob = 2;
+  document.getElementById('addhob').addEventListener('click', (e) => {
+    e.preventDefault();
+    let string = `<input type="text" class="form-control" name="hob${i_hob}" placeholder="Hobbies">
+            <button id="" class="btn btn-primary removehob" style="margin: 0px 6px;">-</button>
+          `
+ // console.log(addStringToElement(string));
+    let div = document.createElement('div');
+    div.innerHTML = string;
+    div.setAttribute('class', 'hob')
+    document.getElementById('hob-box').appendChild(div);
+
+    let removehob = document.getElementsByClassName('removehob');//this will give all remove buttons
+
+    //by iterating over each button here we attach an event listener to that button which will remove the parent element i.e that div itself once it is clicked.
+    for (remove_button of removehob) {
+      remove_button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.target.parentElement.remove();
+
+      })
+    }
+    i_hob++;
+    document.getElementById('no_of_hob').setAttribute('value', i_hob)
+  })
+
+
+</script>
+{% endblock %}

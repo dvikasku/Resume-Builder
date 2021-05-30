@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Resume</title>
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			box-sizing: border-box;
+			font-family: 'Ubuntu', sans-serif;
+		}
+
+		body {
+			background: linear-gradient(to right, #3525af, #9153c9);
+		}
+
+		.resume {
+			width: 800px;
+			background: #fff;
+			margin: 25px auto;
+			display: flex;
+		}
+
+		.left {
+			background: #292b2f;
+			width: 250px;
+			padding: 0 20px;
+		}
+
+		.right {
+			width: calc(100% - 250px);
+		}
+
+		.left .img_holder {
+			text-align: center;
+			padding: 20px 0;
+		}
+
+		.left .img_holder img {
+			width: 200px;
+			border-radius: 30px;
+		}
+
+		.pb {
+			padding-bottom: 20px;
+		}
+
+		.title {
+			font-size: 24px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 5px;
+			padding-bottom: 10px;
+			color: #3525af;
+			position: relative;
+			text-align: right;
+			margin-bottom: 15px;
+		}
+
+		.title:before {
+			content: "";
+			position: absolute;
+			top: 35px;
+			right: 0;
+			width: 50px;
+			height: 3px;
+			background: #3525af;
+		}
+
+		.left .icon {
+			font-size: 20px;
+			color: #9153c9;
+		}
+
+		.left .text {
+			color: #9153c9;
+			text-transform: uppercase;
+			font-size: 13px;
+		}
+
+		.contact .li_wrap {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			margin-bottom: 15px;
+		}
+
+		.contact .li_wrap .icon {
+			width: 50px;
+			height: 50px;
+			background: #fff;
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 15px;
+		}
+
+		.contact .li_wrap .text {
+			width: calc(100% - 50px);
+			word-break: break-word;
+			color: #fff;
+		}
+
+		.skills ul,
+		.hobbies ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		.skills .li_wrap,
+		.hobbies .li_wrap {
+			width: 100px;
+			height: 100px;
+			margin-bottom: 15px;
+			border-radius: 15px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.skills .li_wrap {
+			background: #fff;
+		}
+
+		.skills .li_wrap .text,
+		.hobbies .li_wrap .text {
+			margin-top: 5px;
+			padding: 4px;
+		}
+
+		.hobbies .li_wrap {
+			border: 2px solid rgb(45, 0, 243);
+		}
+
+		.hobbies .li_wrap .icon,
+		.hobbies .li_wrap .text {
+			color: rgb(46, 23, 255);
+		}
+
+		.hobbies .li_wrap {
+			background: #fff;
+		}
+
+
+
+		.header {
+			background: #292b2f;
+			padding: 15px 30px;
+			color: #fff;
+			height: 240px;
+		}
+
+		.header .name {
+			font-size: 40px;
+			text-transform: uppercase;
+			font-weight: 700;
+			color: #3525af;
+		}
+
+		.header .role {
+			font-weight: 300;
+			font-size: 20px;
+		}
+
+		.header .about {
+			margin-top: 20px;
+			line-height: 26px;
+		}
+
+		.right_inner {
+			padding: 30px;
+			color: #292b2f;
+		}
+
+		.right_inner .education {
+			margin-top: 30px;
+		}
+
+		.right_inner .li_wrap {
+			display: flex;
+			margin-bottom: 15px;
+		}
+
+		.right_inner .li_wrap .date {
+			width: 125px;
+			color: #9153c9;
+		}
+
+		.right_inner .li_wrap .info {
+			width: calc(100% - 125px);
+			padding-left: 25px;
+			position: relative;
+		}
+
+		.right_inner .li_wrap .info_title {
+			text-transform: uppercase;
+			font-weight: 700;
+			letter-spacing: 2px;
+			color: #9153c9;
+		}
+
+		.right_inner .li_wrap .info_com {
+			font-weight: 300;
+			font-size: 14px;
+			margin-top: 3px;
+		}
+
+		.right_inner .li_wrap .info_cont {
+			margin-top: 15px;
+		}
+
+		.right_inner .li_wrap .info:before {
+			content: "";
+			position: absolute;
+			top: 3px;
+			left: 0;
+			width: 10px;
+			height: 10px;
+			background: #9153c9;
+			border-radius: 50%;
+		}
+
+		.right_inner .li_wrap .info:after {
+			content: "";
+			position: absolute;
+			top: 10px;
+			left: 4px;
+			width: 2px;
+			height: 90%;
+			background: #9153c9;
+		}
+
+		#download {
+			position: fixed;
+			right: -165px;
+			top: 50%;
+			padding: 26px 30px;
+			background-color: cyan;
+			font-size: 21px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 10px 10px 10px darkcyan;
+			outline: none;
+		}
+
+		#download:hover {
+			position: fixed;
+			right: 5px;
+			top: 50%;
+			background-color: cyan;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 10px 10px 10px darkcyan;
+			transition: 0.5s;
+			font-size: 26px;
+			padding: 21px 20px;
+			font-weight: 600;
+			outline: none;
+		}
+
+		#download {
+			position: fixed;
+			right: -165px;
+			top: 50%;
+			padding: 26px 30px;
+			background-color: cyan;
+			font-size: 21px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 10px 10px 10px darkcyan;
+			outline: none;
+		}
+
+		#download:hover {
+			position: fixed;
+			right: 5px;
+			top: 50%;
+			background-color: cyan;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 10px 10px 10px darkcyan;
+			transition: 0.5s;
+			font-size: 26px;
+			padding: 21px 20px;
+			font-weight: 600;
+			outline: none;
+		}
+	</style>
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+
+<body>
+	<div class="wrapper" id="template">
+		<div class="resume">
+			<div class="left">
+				<div class="img_holder">
+					<img src="/media/images/{{image}}" alt="picture">
+				</div>
+				<div class="contact_wrap pb">
+					<div class="title">
+						Contact
+					</div>
+					<div class="contact">
+						<ul>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+									<div class="text">{{phone}}</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+									<div class="text">{{email}}</div>
+								</div>
+							</li>
+							{% if linkedin %}
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+									<div class="text">{{linkedin}}</div>
+								</div>
+							</li>
+							{% endif %}
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fab fa-weebly" aria-hidden="true"></i></div>
+									<div class="text">Date of Birth: {{dob}}</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fas fa-map-signs" aria-hidden="true"></i></div>
+									<div class="text">{{address}}</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="skills_wrap pb">
+					<div class="title">
+						Skills
+					</div>
+					<div class="skills">
+						<ul>
+							{% for skill in skills%}
+							<li>
+								<div class="li_wrap">
+									<div class="text">{{skill}}</div>
+								</div>
+							</li>
+							{% endfor %}
+				<div class="skills_wrap pb">
+					<div class="title">
+						Languages
+					</div>
+					<div class="skills">
+						<ul>
+							{% for lang in langs%}
+							<li>
+								<div class="li_wrap">
+									<div class="text">{{lang}}</div>
+								</div>
+							</li>
+							{% endfor %}
+							<!-- <li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fab fa-html5"></i></div>
+									<div class="text">HTML</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fab fa-css3-alt"></i></div>
+									<div class="text">CSS</div>
+								</div>
+							</li> -->
+							<!-- <li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fab fa-js"></i></div>
+									<div class="text">Javascript</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class="fab fa-react"></i></div>
+									<div class="text">React.JS</div>
+								</div>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="hobbies_wrap pb">
+					<div class="title">
+						Projects
+					</div>
+					<div class="hobbies">
+						<ul>
+							{% if not project %}
+							<h5>No Projects</h5>
+							{% endif %}
+							{% for project,project_desc in project.items %}
+							<li>
+								<div class="li_wrap">
+									<div class="text">{{project}}</div>
+								</div>
+								<div>
+									<p style="color: white;">{{project_desc.0}}. This skills gained in this project are
+										{{project_desc.1}}</p>
+								</div>
+							</li>
+							<br>
+
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="header">
+					<div class="name_role">
+						<div class="name">
+							{{fname}} {{lname}}
+						</div>
+						<div class="role">
+							UI UX Developer
+						</div>
+					</div>
+					<div class="about">
+						{{about}}
+					</div>
+				</div>
+				<div class="right_inner">
+					<div class="exp">
+						<div class="title">
+							experience
+						</div>
+						<div class="exp_wrap">
+							<ul>
+								{% if not work_experience %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+
+										</div>
+										<div class="info">
+											<p class="info_title">
+												Fresher
+											</p>
+											<!-- <p class="info_com">
+												Facebook
+											</p> -->
+											<p class="info_cont">
+												I am the fresher and ready to do my best!
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+								{% for company_name,job_description in work_experience.items %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											{{job_description.1}}y - Experience
+										</div>
+										<div class="info">
+											<p class="info_title">
+												{{job_description.0}}
+											</p>
+											<p class="info_com">
+												{{company_name}}
+											</p>
+											<p class="info_cont">
+												I worked as a {{job_description.0}} for {{job_description.1 }} years.
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+
+							</ul>
+						</div>
+					</div>
+					<div class="education">
+						<div class="title">
+							Education
+						</div>
+						<div class="education_wrap">
+							<ul>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											{{degree}}
+										</div>
+										<div class="info">
+											<p class="info_title">
+												{{institute}}
+											</p>
+											<p class="info_com">
+
+											</p>
+											<p class="info_cont">
+												I have secured the aggregate of {{cgpa}} in my {{degree}} from
+												{{institute}}
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											{{ten_board}}
+										</div>
+										<div class="info">
+											<p class="info_title">
+												Class Xth
+											</p>
+											<p class="info_com">
+
+											</p>
+											<p class="info_cont">
+												I have secured the aggregate of {{ten_marks}}
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											{{twelve_board}}
+										</div>
+										<div class="info">
+											<p class="info_title">
+												Class XIIth
+											</p>
+											<p class="info_com">
+
+											</p>
+											<p class="info_cont">
+												I have secured the aggregate of {{twelve_marks}}
+											</p>
+										</div>
+									</div>
+								</li>
+								{% if grs %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											GRE Score
+										</div>
+										<div class="info">
+											<p class="info_title">
+												GRE
+											</p>
+											<p class="info_com">
+
+											</p>
+											<p class="info_cont">
+												I have secured a GRE Score of {{gre}}
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+								{% if toef1 %}{% endif %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											TOEFL Score
+										</div>
+										<div class="info">
+											<p class="info_title">
+												TOEFL
+											</p>
+											<p class="info_com">
+
+											</p>
+											<p class="info_cont">
+												I have secured a TOEFL Score of  {{toefl}}
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+								{% for exam_name,rank in exam.items %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											Rank: {{rank}}
+										</div>
+										<div class="info">
+											<p class="info_title">
+												{{exam_name}}
+											</p>
+											<p class="info_com">
+
+											</p>
+											<p class="info_cont">
+												Secured the rank of {{rank}} in {{exam_name}}
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+								{% if course_name %}
+								{% for course_name,duration in certificate.items %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+
+										</div>
+										<div class="info">
+											<p class="info_title">
+												{{course_name}} certification
+											</p>
+											<p class="info_com">
+												{{duration}} weeks
+											</p>
+
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+					<div class="exp">
+						<div class="title">
+							Internships
+						</div>
+						<div class="exp_wrap">
+							<ul>
+								{% if not internship %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+
+										</div>
+										<div class="info">
+											<p class="info_title">
+												Not Intern
+											</p>
+											<!-- <p class="info_com">
+												Facebook
+											</p> -->
+											<p class="info_cont">
+												I haven't done any internship.
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endif %}
+								{% for internship,internship_desc in internship.items %}
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											{{internship_desc.1}} - Weeks
+										</div>
+										<div class="info">
+											<p class="info_title">
+												{{internship}} internship
+											</p>
+											<!-- <p class="info_com">
+												{{company_name}}
+											</p> -->
+											<p class="info_cont">
+												{{internship_desc.0}}. The skills gained in process of making this
+												project are {{internship_desc.2}}
+											</p>
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button id="download">Download PDF</button>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+<script>
+	document.getElementById('download').addEventListener('click', (e) => {
+
+
+		// const downloadMarkup = document.getElementById('template');
+		// const downloadMarkup = `<div id="template"><div class="row"><div class="col-6"><label for="">Email: </label><span class="inputCredential" id="email">${email}</span></div><div class="col-6"><label for="">Address: </label><span class="inputCredential" id="address">${address}</span></div></div><div class="row"><div class="col-6"><label for="">City: </label><span class="inputCredential" id="city">${city}</span></div><div class="col-6"><label for="">State: </label><span class="inputCredential" id="state">${state}</span></div></div></div>`
+		const downloadMarkup = document.getElementById('template');
+		console.log(downloadMarkup);
+		// var opt = {
+		//   filename: 'demo.pdf'
+		// }
+		html2pdf().from(downloadMarkup).save();
+
+	})
+</script>
+
+</html>
